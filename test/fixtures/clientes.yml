@@ -2,20 +2,20 @@
 
 one:
   nome: MyString
-  telefone: MyString
-  email: MyString
   cpf: MyString
+  telefone: MyString
   endereco: MyString
   bairro: MyString
-  complemento: MyString
   numero: MyString
+  cep: MyString
+  uf: MyString
 
 two:
   nome: MyString
-  telefone: MyString
-  email: MyString
   cpf: MyString
+  telefone: MyString
   endereco: MyString
   bairro: MyString
-  complemento: MyString
   numero: MyString
+  cep: MyString
+  uf: MyString
