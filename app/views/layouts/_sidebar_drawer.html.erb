@@ -1,0 +1,23 @@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarDrawer" aria-labelledby="sidebarDrawerLabel">
+  <div class="offcanvas-header bg-dark text-white">
+    <h5 class="offcanvas-title" id="sidebarDrawerLabel">Menu</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body bg-dark text-white">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <%= link_to "Inicio", root_path, class: "nav-link text-white" %>
+      </li>
+      
+      <li class="nav-item">
+        <%= link_to "Clientes", clientes_path, class: "nav-link text-white" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Equipamentos", '', class: "nav-link text-white" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Ordens de Serviço", '', class: "nav-link text-white" %>
+      </li>
+    </ul>
+  </div>
+</div>
