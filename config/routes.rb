@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :modelos
+  resources :marcas
+  resources :categoria_equipamentos
   resources :clientes
   root to: "home#index"
   devise_for :users

@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_05_184611) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_25_014159) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "categoria_equipamentos", force: :cascade do |t|
+    t.string "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "clientes", force: :cascade do |t|
     t.string "nome"
@@ -27,6 +33,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_05_184611) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "marcas", force: :cascade do |t|
+    t.string "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "modelos", force: :cascade do |t|
+    t.string "descricao"
+    t.bigint "marca_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["marca_id"], name: "index_modelos_on_marca_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -38,4 +58,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_05_184611) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "modelos", "marcas"
 end

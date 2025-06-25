@@ -1,0 +1,46 @@
+<% content_for :title, "Alterar Senha" %>
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-sm" style="width: 100%; max-width: 420px;">
+    <div class="card-header text-center bg-info text-white">
+      <h4 class="mb-0">Alterar Senha</h4>
+    </div>
+
+    <div class="card-body">
+      <%= form_with(model: resource, as: resource_name, url: password_path(resource_name), method: :put, local: true) do |f| %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <% if resource.errors.any? %>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
+              <% resource.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= f.label :password, "Nova senha", class: "form-label" %>
+          <% if @minimum_password_length %>
+            <div class="form-text">Mínimo de <%= @minimum_password_length %> caracteres</div>
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control form-control-sm" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password_confirmation, "Confirme a nova senha", class: "form-label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-sm" %>
+        </div>
+
+        <div class="d-grid mb-3">
+          <%= f.submit "Alterar Senha", class: "btn btn-info btn-sm" %>
+        </div>
+      <% end %>
+
+      <div class="text-center">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

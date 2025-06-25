@@ -1,9 +1,14 @@
-<html>
-    <head>
-    </head>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card text-white bg-primary mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fa fa-users me-2"></i>Total de Clientes</h5>
+        <p class="card-text display-4"><%= @total_clientes %></p>
+      </div>
+    </div>
+  </div>
+  <!-- você pode adicionar mais cards aqui -->
+</div>
 
-    <body>
-        
-    </body>
-</html>
-
+<!-- Conteúdo existente da home -->
+<%= yield :main_content %>

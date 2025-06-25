@@ -1,12 +1,16 @@
-<% content_for :title, "Editing cliente" %>
+<% content_for :title, "Editar Cliente" %>
 
-<h1>Editing cliente</h1>
+<div class="card">
+  <div class="card-header">
+    <h2>Editar Cliente</h2>
+  </div>
 
-<%= render "form", cliente: @cliente %>
+  <div class="card-body">
+    <%= render "form", cliente: @cliente %>
+  </div>
 
-<br>
-
-<div>
-  <%= link_to "Show this cliente", @cliente %> |
-  <%= link_to "Back to clientes", clientes_path %>
+  <div class="card-footer d-flex justify-content-between">
+    <%= link_to "Visualizar Cliente", @cliente, class: "btn btn-info" %>
+    <%= link_to "Voltar à Lista", clientes_path, class: "btn btn-secondary" %>
+  </div>
 </div>

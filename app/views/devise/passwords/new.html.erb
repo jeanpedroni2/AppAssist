@@ -1,0 +1,40 @@
+<% content_for :title, "Recuperar Senha" %>
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-sm" style="width: 100%; max-width: 400px;">
+    <div class="card-header text-center bg-warning text-dark">
+      <h4 class="mb-0">Esqueceu sua Senha?</h4>
+    </div>
+
+    <div class="card-body">
+      <p class="text-muted text-center small mb-3">
+        Digite seu e-mail abaixo para receber instruções de redefinição de senha.
+      </p>
+
+      <%= form_with(model: resource, as: resource_name, url: password_path(resource_name), method: :post, local: true) do |f| %>
+        <% if resource.errors.any? %>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
+              <% resource.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm" %>
+        </div>
+
+        <div class="d-grid mb-3">
+          <%= f.submit "Enviar instruções", class: "btn btn-warning btn-sm" %>
+        </div>
+      <% end %>
+
+      <div class="text-center">
+        <%= link_to "Voltar ao login", new_session_path(resource_name), class: "text-muted small" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,61 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Clientes" %>
 
-<h1>Clientes</h1>
+<h1 class="mb-4">Clientes</h1>
 
-<div id="clientes">
-  <% @clientes.each do |cliente| %>
-    <%= render cliente %>
-    <p>
-      <%= link_to "Show this cliente", cliente %>
-    </p>
-  <% end %>
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+<div class="card">
+  <div class="card-body">
+    <table class="table table-hover table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+          <th>Endereço</th>
+          <th>UF</th>
+          <th class="text-center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clientes.each do |cliente| %>
+          <tr>
+            <td><%= cliente.nome %></td>
+            <td><%= format_cpf(cliente.cpf) %></td>
+            <td><%= format_brazilian_phone(cliente.telefone) %></td>
+            <td>
+              <%= cliente.endereco %>, 
+              <%= cliente.numero %> - 
+              <%= cliente.bairro %> - 
+              <%= format_cep(cliente.cep) %>
+            </td>
+            <td><%= cliente.uf %></td>
+            <td class="text-center">
+              <%= link_to cliente, class: "btn btn-sm btn-info me-1" do %>
+                <i class="fa fa-eye"></i> Ver
+              <% end %>
+              <%= link_to edit_cliente_path(cliente), class: "btn btn-sm btn-warning me-1" do %>
+                <i class="fa fa-edit"></i> Editar
+              <% end %>
+              <%= link_to cliente, 
+                  method: :delete, 
+                  data: { confirm: "Tem certeza que deseja excluir?" }, 
+                  class: "btn btn-sm btn-danger" do %>
+                <i class="fa fa-trash"></i> Excluir
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end">
+      <%= link_to "Novo Cliente", new_cliente_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New cliente", new_cliente_path %>

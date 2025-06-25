@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Categoria equipamentos" %>
+
+<h1>Categoria equipamentos</h1>
+
+<div id="categoria_equipamentos">
+  <% @categoria_equipamentos.each do |categoria_equipamento| %>
+    <%= render categoria_equipamento %>
+    <p>
+      <%= link_to "Show this categoria equipamento", categoria_equipamento %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New categoria equipamento", new_categoria_equipamento_path %>

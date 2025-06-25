@@ -1,10 +1,40 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "Detalhes do Cliente" %>
 
-<%= render @cliente %>
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
 
-<div>
-  <%= link_to "Edit this cliente", edit_cliente_path(@cliente) %> |
-  <%= link_to "Back to clientes", clientes_path %>
+<div class="card">
+  <div class="card-header">
+    <h4><i class="fa fa-user"></i> Detalhes do Cliente</h4>
+  </div>
+  <div class="card-body">
+    <dl class="row">
+      <dt class="col-sm-3">Nome</dt>
+      <dd class="col-sm-9"><%= @cliente.nome %></dd>
 
-  <%= button_to "Destroy this cliente", @cliente, method: :delete %>
+      <dt class="col-sm-3">CPF</dt>
+      <dd class="col-sm-9"><%= format_cpf(@cliente.cpf) %></dd>
+
+      <dt class="col-sm-3">Telefone</dt>
+      <dd class="col-sm-9"><%= format_brazilian_phone(@cliente.telefone) %></dd>
+
+      <dt class="col-sm-3">Endereço</dt>
+      <dd class="col-sm-9">
+        <%= @cliente.endereco %>, <%= @cliente.numero %> - 
+        <%= @cliente.bairro %> - <%= format_cep(@cliente.cep) %>, 
+        <%= UfService.nome_estado(@cliente.uf) %> (<%= @cliente.uf %>)
+      </dd>
+    </dl>
+  </div>
+  <div class="card-footer d-flex justify-content-between">
+    <%= link_to "Editar", edit_cliente_path(@cliente), class: "btn btn-warning" %>
+    <div>
+      <%= link_to "Voltar", clientes_path, class: "btn btn-secondary me-2" %>
+      <%= button_to "Excluir", @cliente, method: :delete, data: { confirm: "Tem certeza que deseja excluir este cliente?" }, class: "btn btn-danger" %>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,14 @@
+<h2 style="color: #0d6efd;">Olá, <%= @email %> 👋</h2>
+
+<p>Estamos felizes em ter você conosco!</p>
+
+<p>Para ativar sua conta, basta confirmar seu endereço de e-mail clicando no botão abaixo:</p>
+
+<p style="margin: 20px 0;">
+  <%= link_to "Confirmar minha conta", confirmation_url(@resource, confirmation_token: @token),
+              style: "display: inline-block; padding: 10px 20px; background-color: #0d6efd; color: white; text-decoration: none; border-radius: 5px;" %>
+</p>
+
+<p>Se você não criou uma conta, por favor ignore este e-mail.</p>
+
+<p style="font-size: 0.9em; color: #666;">Obrigado,<br>Equipe App Assist</p>

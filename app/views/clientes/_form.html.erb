@@ -1,57 +1,62 @@
-<%= form_with(model: cliente) do |form| %>
+<%= form_with(model: cliente, local: true) do |form| %>
   <% if cliente.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(cliente.errors.count, "erro") %> impedem o salvamento:</h4>
       <ul>
-        <% cliente.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% cliente.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+  <!-- Nome, CPF, Telefone (cada um em linha separada) -->
+  <div class="mb-3">
+    <%= form.label :nome, class: "form-label" %>
+    <%= form.text_field :nome, class: "form-control", style: "width=25%;" %>
   </div>
 
-  <div>
-    <%= form.label :cpf, style: "display: block" %>
-    <%= form.text_field :cpf %>
+  <div class="mb-3">
+    <%= form.label :cpf, class: "form-label" %>
+    <%= form.text_field :cpf, class: "form-control", id: "cpf-input" %>
   </div>
 
-  <div>
-    <%= form.label :telefone, style: "display: block" %>
-    <%= form.text_field :telefone %>
+  <div class="mb-3">
+    <%= form.label :telefone, class: "form-label" %>
+    <%= form.text_field :telefone, class: "form-control", id: "telefone-input" %>
   </div>
 
-  <div>
-    <%= form.label :endereco, style: "display: block" %>
-    <%= form.text_field :endereco %>
+  <!-- Endereço, Bairro, Número, CEP, UF na mesma linha -->
+  <div class="row mb-3">
+    <div class="col-md-5">
+      <%= form.label :endereco, class: "form-label" %>
+      <%= form.text_field :endereco, class: "form-control" %>
+    </div>
+
+    <div class="col-md-3">
+      <%= form.label :bairro, class: "form-label" %>
+      <%= form.text_field :bairro, class: "form-control" %>
+    </div>
+
+    <div class="col-md-2">
+      <%= form.label :numero, class: "form-label" %>
+      <%= form.text_field :numero, class: "form-control" %>
+    </div>
+
+    <div class="col-md-2">
+      <%= form.label :cep, class: "form-label" %>
+      <%= form.text_field :cep, class: "form-control", id: "cep-input" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :bairro, style: "display: block" %>
-    <%= form.text_field :bairro %>
+  <!-- UF -->
+  <div class="mb-4">
+    <%= form.label :uf, class: "form-label" %>
+    <%= form.select :uf, UfService.options_for_select, { prompt: "Selecione" }, { class: "form-select" } %>
   </div>
 
-  <div>
-    <%= form.label :numero, style: "display: block" %>
-    <%= form.text_field :numero %>
-  </div>
-
-  <div>
-    <%= form.label :cep, style: "display: block" %>
-    <%= form.text_field :cep %>
-  </div>
-
-  <div>
-    <%= form.label :uf, style: "display: block" %>
-    <%= form.text_field :uf %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <!-- Botão -->
+  <div class="d-flex justify-content-end">
+    <%= form.submit cliente.new_record? ? "Salvar Cliente" : "Salvar Alterações", class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,0 +1,71 @@
+<% content_for :title, "Editar Conta" %>
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-sm" style="width: 100%; max-width: 450px;">
+    <div class="card-header text-center bg-secondary text-white">
+      <h4 class="mb-0">Editar Conta</h4>
+    </div>
+
+    <div class="card-body">
+      <%= form_with(model: resource, as: resource_name, url: registration_path(resource_name), method: :put, local: true) do |f| %>
+        <% if resource.errors.any? %>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
+              <% resource.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div class="alert alert-warning small mb-3">
+            Aguardando confirmação de: <strong><%= resource.unconfirmed_email %></strong>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= f.label :password, "Nova senha", class: "form-label" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-sm" %>
+          <% if @minimum_password_length %>
+            <div class="form-text">Deixe em branco se não quiser alterar</div>
+          <% end %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password_confirmation, "Confirme a nova senha", class: "form-label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-sm" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :current_password, "Senha atual", class: "form-label" %>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control form-control-sm" %>
+          <div class="form-text">Necessária para confirmar alterações</div>
+        </div>
+
+        <div class="d-grid mb-3">
+          <%= f.submit "Atualizar Conta", class: "btn btn-secondary btn-sm" %>
+        </div>
+      <% end %>
+
+      <hr>
+
+      <div class="text-center">
+        <h6 class="text-danger">Cancelar Conta</h6>
+        <%= button_to "Cancelar minha conta", registration_path(resource_name),
+              data: { confirm: "Tem certeza que deseja excluir sua conta?" },
+              method: :delete,
+              class: "btn btn-outline-danger btn-sm" %>
+      </div>
+
+      <div class="text-center mt-3">
+        <%= link_to "Voltar", root_path, class: "text-muted small" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -48,6 +48,9 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="avatarDropdown">
               <li>
+                <%= link_to "Alterar Senha", edit_user_registration_path, class: "dropdown-item" %>
+              </li>
+              <li>
                 <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </li>
             </ul>
@@ -94,7 +97,23 @@
             document.body.classList.remove("drawer-opened");
           });
         }
+
+        var telefone = document.getElementById('telefone-input');
+        if (telefone) {
+          IMask(telefone, { mask: '(00) 00000-0000' });
+        }
+
+        var cep = document.getElementById('cep-input');
+        if (cep) {
+          IMask(cep, { mask: '00000-000' });
+        }
+
+        var cpf = document.getElementById('cpf-input');
+        if (cpf) {
+          IMask(cpf, { mask: '000.000.000-00' });
+        }
       });
     </script>
+
   </body>
 </html>

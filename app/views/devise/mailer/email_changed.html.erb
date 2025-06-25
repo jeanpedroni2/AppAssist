@@ -1,0 +1,14 @@
+<h2 style="color: #0d6efd;">Olá, <%= @email %> 👋</h2>
+
+<% if @resource.try(:unconfirmed_email?) %>
+  <p>Estamos entrando em contato para informar que seu e-mail está sendo alterado para:</p>
+  <p><strong><%= @resource.unconfirmed_email %></strong></p>
+  <p>Assim que a confirmação for concluída, este será o novo e-mail associado à sua conta.</p>
+<% else %>
+  <p>Este é um aviso de que o e-mail da sua conta foi alterado para:</p>
+  <p><strong><%= @resource.email %></strong></p>
+<% end %>
+
+<p>Se você não solicitou essa alteração, por favor entre em contato conosco imediatamente.</p>
+
+<p style="font-size: 0.9em; color: #666;">Abraços,<br>Equipe App Assist</p>
