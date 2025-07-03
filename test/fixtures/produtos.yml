@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyString
+  tipoproduto: one
+  valor: 9.99
+  marca: one
+  unidademedida: one
+  status: MyString
+  movestoque: MyString
+
+two:
+  descricao: MyString
+  tipoproduto: two
+  valor: 9.99
+  marca: two
+  unidademedida: two
+  status: MyString
+  movestoque: MyString

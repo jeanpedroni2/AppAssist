@@ -1,16 +1,39 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "Categorias de Equipamento" %>
 
-<% content_for :title, "Categoria equipamentos" %>
+<h1 class="mb-4">Categorias de Equipamento</h1>
 
-<h1>Categoria equipamentos</h1>
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
 
-<div id="categoria_equipamentos">
-  <% @categoria_equipamentos.each do |categoria_equipamento| %>
-    <%= render categoria_equipamento %>
-    <p>
-      <%= link_to "Show this categoria equipamento", categoria_equipamento %>
-    </p>
-  <% end %>
+<div class="card">
+  <div class="card-body">
+    <table class="table table-bordered table-hover mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>Descrição</th>
+          <th class="text-center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categoria_equipamentos.each do |categoria_equipamento| %>
+          <tr>
+            <td><%= categoria_equipamento.descricao %></td>
+            <td class="text-center">
+              <%= link_to "Ver", categoria_equipamento, class: "btn btn-info btn-sm me-1" %>
+              <%= link_to "Editar", edit_categoria_equipamento_path(categoria_equipamento), class: "btn btn-warning btn-sm me-1" %>
+              <%= link_to "Excluir", categoria_equipamento, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end mt-3">
+      <%= link_to "Nova Categoria", new_categoria_equipamento_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New categoria equipamento", new_categoria_equipamento_path %>

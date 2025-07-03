@@ -1,11 +1,13 @@
-<% content_for :title, "New marca" %>
+<% content_for :title, "Nova Marca" %>
 
-<h1>New marca</h1>
-
-<%= render "form", marca: @marca %>
-
-<br>
-
-<div>
-  <%= link_to "Back to marcas", marcas_path %>
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">Nova Marca</h5>
+  </div>
+  <div class="card-body">
+    <%= render "form", marca: @marca %>
+  </div>
+  <div class="card-footer">
+    <%= link_to "Voltar à Lista", marcas_path, class: "btn btn-secondary btn-sm" %>
+  </div>
 </div>

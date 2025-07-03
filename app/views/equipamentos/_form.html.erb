@@ -1,0 +1,47 @@
+<%= form_with(model: equipamento) do |form| %>
+  <% if equipamento.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(equipamento.errors.count, "error") %> prohibited this equipamento from being saved:</h2>
+
+      <ul>
+        <% equipamento.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :categoria_equipamento_id, style: "display: block" %>
+    <%= form.text_field :categoria_equipamento_id %>
+  </div>
+
+  <div>
+    <%= form.label :modelo_id, style: "display: block" %>
+    <%= form.text_field :modelo_id %>
+  </div>
+
+  <div>
+    <%= form.label :serial, style: "display: block" %>
+    <%= form.text_field :serial %>
+  </div>
+
+  <div>
+    <%= form.label :observacoes, style: "display: block" %>
+    <%= form.text_field :observacoes %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+    <%= form.label :cliente_id, style: "display: block" %>
+    <%= form.text_field :cliente_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

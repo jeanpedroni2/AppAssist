@@ -1,12 +1,12 @@
-<div id="<%= dom_id modelo %>">
-  <p>
-    <strong>Descricao:</strong>
-    <%= modelo.descricao %>
-  </p>
-
-  <p>
-    <strong>Marca:</strong>
-    <%= modelo.marca_id %>
-  </p>
-
+<div id="<%= dom_id modelo %>" class="mb-3">
+  <div class="mb-2">
+    <span class="fw-bold">Descrição:</span>
+    <span><%= modelo.descricao %></span>
+  </div>
+  <div>
+    <span class="fw-bold">Marca:</span>
+    <span>
+      <%= modelo.marca.try(:descricao) || "-" %>
+    </span>
+  </div>
 </div>

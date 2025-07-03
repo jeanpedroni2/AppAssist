@@ -1,0 +1,2 @@
+class Sintoma < ApplicationRecord
+end

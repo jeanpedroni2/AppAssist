@@ -1,11 +1,13 @@
-<% content_for :title, "New categoria equipamento" %>
+<% content_for :title, "Nova Categoria de Equipamento" %>
 
-<h1>New categoria equipamento</h1>
-
-<%= render "form", categoria_equipamento: @categoria_equipamento %>
-
-<br>
-
-<div>
-  <%= link_to "Back to categoria equipamentos", categoria_equipamentos_path %>
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">Nova Categoria de Equipamento</h5>
+  </div>
+  <div class="card-body">
+    <%= render "form", categoria_equipamento: @categoria_equipamento %>
+  </div>
+  <div class="card-footer">
+    <%= link_to "Voltar à Lista", categoria_equipamentos_path, class: "btn btn-secondary btn-sm" %>
+  </div>
 </div>

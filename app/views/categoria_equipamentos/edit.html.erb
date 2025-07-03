@@ -1,12 +1,16 @@
-<% content_for :title, "Editing categoria equipamento" %>
+<% content_for :title, "Editar Categoria de Equipamento" %>
 
-<h1>Editing categoria equipamento</h1>
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">Editar Categoria de Equipamento</h5>
+  </div>
 
-<%= render "form", categoria_equipamento: @categoria_equipamento %>
+  <div class="card-body">
+    <%= render "form", categoria_equipamento: @categoria_equipamento %>
+  </div>
 
-<br>
-
-<div>
-  <%= link_to "Show this categoria equipamento", @categoria_equipamento %> |
-  <%= link_to "Back to categoria equipamentos", categoria_equipamentos_path %>
+  <div class="card-footer d-flex justify-content-between">
+    <%= link_to "Visualizar", @categoria_equipamento, class: "btn btn-info btn-sm" %>
+    <%= link_to "Voltar à Lista", categoria_equipamentos_path, class: "btn btn-secondary btn-sm" %>
+  </div>
 </div>

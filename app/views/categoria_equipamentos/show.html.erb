@@ -1,10 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "Categoria de Equipamento" %>
 
-<%= render @categoria_equipamento %>
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
 
-<div>
-  <%= link_to "Edit this categoria equipamento", edit_categoria_equipamento_path(@categoria_equipamento) %> |
-  <%= link_to "Back to categoria equipamentos", categoria_equipamentos_path %>
+<div class="card mb-4">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">Detalhes da Categoria</h5>
+  </div>
+  <div class="card-body">
+    <%= render @categoria_equipamento %>
+  </div>
+</div>
 
-  <%= button_to "Destroy this categoria equipamento", @categoria_equipamento, method: :delete %>
+<div class="d-flex gap-2">
+  <%= link_to "Editar", edit_categoria_equipamento_path(@categoria_equipamento), class: "btn btn-warning btn-sm" %>
+  <%= link_to "Voltar", categoria_equipamentos_path, class: "btn btn-secondary btn-sm" %>
+  <%= button_to "Excluir", @categoria_equipamento, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
 </div>

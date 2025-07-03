@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Unidade medidas" %>
+
+<h1>Unidade medidas</h1>
+
+<div id="unidade_medidas">
+  <% @unidade_medidas.each do |unidade_medida| %>
+    <%= render unidade_medida %>
+    <p>
+      <%= link_to "Show this unidade medida", unidade_medida %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New unidade medida", new_unidade_medida_path %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @acessorio %>
+
+<div>
+  <%= link_to "Edit this acessorio", edit_acessorio_path(@acessorio) %> |
+  <%= link_to "Back to acessorios", acessorios_path %>
+
+  <%= button_to "Destroy this acessorio", @acessorio, method: :delete %>
+</div>

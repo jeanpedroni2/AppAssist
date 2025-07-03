@@ -1,22 +1,21 @@
-<%= form_with(model: categoria_equipamento) do |form| %>
+<%= form_with(model: categoria_equipamento, local: true) do |form| %>
   <% if categoria_equipamento.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(categoria_equipamento.errors.count, "error") %> prohibited this categoria_equipamento from being saved:</h2>
-
-      <ul>
-        <% categoria_equipamento.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(categoria_equipamento.errors.count, "erro") %> impedem o salvamento:</h5>
+      <ul class="mb-0">
+        <% categoria_equipamento.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :descricao, style: "display: block" %>
-    <%= form.text_field :descricao %>
+  <div class="mb-3">
+    <%= form.label :descricao, "Descrição", class: "form-label" %>
+    <%= form.text_field :descricao, class: "form-control w-25", placeholder: "Ex: Informática, Eletrodomésticos..." %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="d-flex justify-content-end">
+    <%= form.submit categoria_equipamento.new_record? ? "Salvar" : "Atualizar", class: "btn btn-primary" %>
   </div>
 <% end %>

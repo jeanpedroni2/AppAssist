@@ -1,27 +1,26 @@
-<%= form_with(model: modelo) do |form| %>
+<%= form_with(model: modelo, local: true) do |form| %>
   <% if modelo.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(modelo.errors.count, "error") %> prohibited this modelo from being saved:</h2>
-
-      <ul>
-        <% modelo.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(modelo.errors.count, "erro") %> impediram o salvamento:</h5>
+      <ul class="mb-0">
+        <% modelo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :descricao, style: "display: block" %>
-    <%= form.text_field :descricao %>
+  <div class="mb-3">
+    <%= form.label :descricao, "Descrição", class: "form-label" %>
+    <%= form.text_field :descricao, class: "form-control w-25", placeholder: "Ex: Inspiron 3000, Galaxy S22..." %>
   </div>
 
-  <div>
-    <%= form.label :marca_id, style: "display: block" %>
-    <%= form.text_field :marca_id %>
+  <div class="mb-3">
+    <%= form.label :marca_id, "Marca", class: "form-label" %>
+    <%= form.collection_select :marca_id, Marca.all, :id, :descricao, { prompt: "Selecione a marca" }, class: "form-select w-25" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="d-flex justify-content-end">
+    <%= form.submit modelo.new_record? ? "Salvar" : "Atualizar", class: "btn btn-primary" %>
   </div>
 <% end %>

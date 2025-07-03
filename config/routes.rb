@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :produtos
+  resources :unidade_medidas
+  resources :tipo_produtos
+  resources :equipamentos
+  resources :problemas
+  resources :sintomas
+  resources :acessorios
   resources :modelos
   resources :marcas
   resources :categoria_equipamentos

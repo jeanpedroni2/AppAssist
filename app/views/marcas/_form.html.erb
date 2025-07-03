@@ -1,22 +1,21 @@
-<%= form_with(model: marca) do |form| %>
+<%= form_with(model: marca, local: true) do |form| %>
   <% if marca.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(marca.errors.count, "error") %> prohibited this marca from being saved:</h2>
-
-      <ul>
-        <% marca.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(marca.errors.count, "erro") %> impediram o salvamento:</h5>
+      <ul class="mb-0">
+        <% marca.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :descricao, style: "display: block" %>
-    <%= form.text_field :descricao %>
+  <div class="mb-3">
+    <%= form.label :descricao, "Descrição", class: "form-label" %>
+    <%= form.text_field :descricao, class: "form-control", placeholder: "Ex: HP, Samsung, LG..." %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="d-flex justify-content-end">
+    <%= form.submit marca.new_record? ? "Salvar" : "Atualizar", class: "btn btn-primary" %>
   </div>
 <% end %>

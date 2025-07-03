@@ -1,11 +1,13 @@
-<% content_for :title, "New modelo" %>
+<% content_for :title, "Novo Modelo" %>
 
-<h1>New modelo</h1>
-
-<%= render "form", modelo: @modelo %>
-
-<br>
-
-<div>
-  <%= link_to "Back to modelos", modelos_path %>
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">Novo Modelo</h5>
+  </div>
+  <div class="card-body">
+    <%= render "form", modelo: @modelo %>
+  </div>
+  <div class="card-footer">
+    <%= link_to "Voltar à Lista", modelos_path, class: "btn btn-secondary btn-sm" %>
+  </div>
 </div>

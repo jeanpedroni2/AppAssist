@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @sintoma %>
+
+<div>
+  <%= link_to "Edit this sintoma", edit_sintoma_path(@sintoma) %> |
+  <%= link_to "Back to sintomas", sintomas_path %>
+
+  <%= button_to "Destroy this sintoma", @sintoma, method: :delete %>
+</div>
